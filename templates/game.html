@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Charades Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5 text-center">
+    <h1>Your Charade is...</h1>
+    <h3>{{ charade }}</h3>
+    <!-- <a class="btn btn-primary" href="/">Next</a>-->
+
+    <form method="POST" action="/game">
+        {% for category in categories %}
+            <input type="hidden" name="category" value="{{ category }}">
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+    <!-- New -->
+</div>
+
+</body>
+</html>
