@@ -2,5 +2,6 @@
 
 to run 
 ```
-$ conda activate charades
+$ make run
 ```
+
