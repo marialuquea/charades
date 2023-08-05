@@ -91,9 +91,11 @@ categories = {
 }
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET","POST"])
 def index():
+    print('request method:', request.method) #---> fails here <---
     if request.method == "POST":
+        print(request)
         selected_categories = request.form.getlist("category")
         session["selected_categories"] = selected_categories
         print('selected categories:', selected_categories)
