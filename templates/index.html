@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Charades Game</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block content %}
 <div class="container mt-5">
-    <h1>Charades Game</h1>
-    <form method="POST">
+    <h2>Select categories:</h2>
+    <form method="POST" action="/game">
         <div class="form-group">
-            <label>Select categories:</label>
             {% for category in categories %}
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" name="category" value="{{ category }}">
@@ -21,6 +15,4 @@
         <button type="submit" class="btn btn-primary">Start Game</button>
     </form>
 </div>
-
-</body>
-</html>
+{% endblock %}
