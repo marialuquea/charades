@@ -1,0 +1,11 @@
+/* styles.css */
+
+/* Custom button color */
+.custom-button {
+    background-color: #F4D35E;
+    border-color: #F4D35E;
+    color: black; /* Add text color to ensure visibility */
+    border-radius: 14px;
+    padding: 10px 20px;
+    margin: 5px;
+}
