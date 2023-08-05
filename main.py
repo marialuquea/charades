@@ -14,19 +14,29 @@ categories = {
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    print('----STARTING----')
     if request.method == "POST":
+        print('request method is Post')
         selected_categories = request.form.getlist("category")
-        return render_template("game.html", charade=getInitialCharade(selected_categories))
+        print('selected categories:', selected_categories)
+        return render_template("game.html", charade=getRandomCharade(selected_categories))
     return render_template("index.html", categories=categories.keys())
 
-def getInitialCharade(selected_categories):
-    return getRandomCharade(selected_categories)
+# def getInitialCharade(selected_categories):
+#     return getRandomCharade(selected_categories)
 
 def getRandomCharade(selected_categories):
+    print('getting random charade')
     all_charades = [item for category in selected_categories for item in categories[category]]
+    print('all charades:', all_charades)
+    chosen = random.choice(all_charades)
+    print('chosen:', chosen)
     if not all_charades:
-        return "Please select at least one category."
-    return random.choice(all_charades)
+        print('NOT all charades:', all_charades)
+        all_charades = [item for category in categories.keys() for item in categories[category]]
+        chosen = random.choice(all_charades)
+        print('chosen:', chosen)
+    return chosen
 
 if __name__ == "__main__":
     app.run(debug=True)
