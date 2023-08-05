@@ -1,2 +1,6 @@
-# charades
-Charades game
+# Charades app
+
+to run 
+```
+$ conda activate charades
+```
