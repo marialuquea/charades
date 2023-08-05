@@ -16,15 +16,16 @@ categories = {
 def index():
     if request.method == "POST":
         selected_categories = request.form.getlist("category")
-        charade = get_random_charade(selected_categories)
-        return render_template("index.html", categories=categories.keys(), charade=charade)
-    return render_template("index.html", categories=categories.keys(), charade=None)
+        return render_template("game.html", charade=getInitialCharade(selected_categories))
+    return render_template("index.html", categories=categories.keys())
 
-def get_random_charade(selected_categories):
-    if not selected_categories:
-        return "Please select at least one category."
-    
+def getInitialCharade(selected_categories):
+    return getRandomCharade(selected_categories)
+
+def getRandomCharade(selected_categories):
     all_charades = [item for category in selected_categories for item in categories[category]]
+    if not all_charades:
+        return "Please select at least one category."
     return random.choice(all_charades)
 
 if __name__ == "__main__":
